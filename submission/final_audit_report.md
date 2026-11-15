@@ -9,3 +9,5 @@ Fixed earlier: exact interval residual rank, hosted error diagnostics, float32 t
 Credentials: no API key is required by the app. Public source should be scanned before final push; personal emails are retained only in the form and local confirmation. Code/model data are public sources. Team confirmed equal contributions and rules; school is Neerja Modi School. Climate is selected on the form. Public code and README links satisfy the organizer's required link format. Video is optional and requires a suitable share URL if included.
 
 Manual responsibility: both students must understand the work and respond to judges. A successful form confirmation must be saved before claiming submission. Do not claim the generated video has student narration or continuous interaction.
+
+Final demo: revised to a 101-second edited capture of actual browser interactions, replacing the initial static walkthrough. Required project submission was accepted by Airtable and confirmation saved locally. A final revision includes the publicly viewable Drive demo.

@@ -18,4 +18,4 @@
 1:40–1:55 | Limitations and closing
 “Our data is modelled, and historical accuracy is not a live accuracy guarantee. Next we'd validate on Jaipur sensors and run a prospective test. AirCast makes a prediction and makes its limits inspectable.”
 
-Stop before two minutes. The generated captioned MP4 uses actual prototype screenshots and verified results; it is not a screen recording of continuous interaction and has no student voice-over.
+Stop before two minutes. The final 101-second MP4 uses edited captures of actual browser interactions and changing results. It has no student voice-over.
