@@ -1,4 +1,6 @@
 # AirCast — Jaipur air, a day ahead
+
+**Current app:** the Forecast homepage predicts the next India-calendar day using recent provider inputs. Historical 2025 replay is under Model lab / Historical replay.
 **Track:** AI + Climate  
 **Team:** Nitaksh Jain and Kyros Goyal
 
@@ -23,3 +25,15 @@ Nitaksh Jain and Kyros Goyal contributed equally (50% each), jointly across the 
 ## Historical Dataset Partition
 
 The 2023–2025 dates describe historical observations, not project-development dates. The bundled Open-Meteo data was downloaded on 15 November 2026. The models were trained and evaluated on 15 November 2026 during the hackathon. Target-date partitions remain: training 8 January 2023–30 June 2024 (540 days), validation 1 July–31 December 2024 (184 days), and testing 1 January–31 December 2025 (365 days). No observations, model results or methodology were changed for this wording update.
+
+## Next-day prediction mode (added during the hackathon)
+
+The Forecast homepage now requests seven recent days plus today/tomorrow from the Open-Meteo air-quality and weather Forecast APIs. It constructs the same 12 features and runs the existing frozen ridge and random forest in the browser to predict the next India-calendar day's mean PM2.5. The date and issue time are computed dynamically. Historical replay is at `#replay`; Model lab retains the held-out results.
+
+Crucial distinction: today's full-day inputs are provider estimates, including forecasts for remaining hours. This lets the application issue tomorrow's prediction before today ends, but is an unvalidated hybrid pipeline. Its inputs differ from the retrospective reanalysis experiment. No live accuracy or calibrated live uncertainty claim is made. Tomorrow's pollution is never a model input; CAMS's separate next-day forecast is displayed only as an external comparator. Historical scores remain unchanged.
+
+Refresh fetches current inputs. If providers fail, a bundled input snapshot may be used only on the same India calendar day and within two hours of issue; the UI explicitly labels it as a saved snapshot. Otherwise it shows a data-unavailable message, never a silent 2025 fallback. A downloadable JSON record includes issue time, feature values, forecasts and source URLs for prospective evaluation.
+
+At implementation on 15 November 2026, the captured inputs produced a ridge prediction of approximately 47.2 µg/m³ for 16 November 2026. This is a prediction, not a verified outcome. Snapshot values may change as provider inputs update. Live tests: `node tests/live.test.cjs` checks exact feature parity on 365 historical examples, India-midnight date rollover, future-target exclusion, missing data and units.
+
+Source documentation: https://open-meteo.com/en/docs/air-quality-api and https://open-meteo.com/en/docs . The model still predicts gridded atmospheric estimates, not CPCB ground-station measurements. A prospective trial and independent station validation remain required.

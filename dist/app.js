@@ -22,7 +22,7 @@ function subindex(value){
   return {value:'401+',label:'Severe',color:'#e9c2cb'};
 }
 function showView(v){
-  if(!['forecast','lab','method'].includes(v))v='forecast';
+  if(!['forecast','replay','lab','method'].includes(v))v='forecast';
   $$('.view').forEach(el=>el.hidden=el.id!==v);
   $$('.nav').forEach(el=>{el.classList.toggle('active',el.dataset.view===v);el.setAttribute('aria-current',el.dataset.view===v?'page':'false')});
   if(location.hash!=='#'+v)history.replaceState(null,'','#'+v);
@@ -82,7 +82,7 @@ function lab(){
   <article class="panel"><span class="eyebrow">UNCERTAINTY, MEASURED</span><h2>A range, not a promise.</h2><p>The nominal 80% interval uses the absolute prediction errors from the 184 validation days, using the exact 1-based residual rank ${E.interval.residual_rank}. It has a constant radius of ${fmt(E.interval_radius)} µg/m³, clipped at zero.</p><h3>${fmt(E.interval_coverage*100,1)}% test coverage</h3><p>Coverage means the archived next-day value fell inside the interval this often. The same validation period selected the model, so this is an empirical interval, not an independent conformal calibration. Time dependence and distribution shifts mean future coverage is not guaranteed.</p><p class="fine">Results evaluate forecasts of gridded CAMS estimates, not measured street-level exposure.</p></article></div>`;
   $('#threshold').addEventListener('input',warningCounts);warningCounts();
   $('#scenario-date').addEventListener('change',resetScenario);$$('.scenario-input').forEach(i=>i.addEventListener('input',scenario));resetScenario();
-  $$('.failure-link').forEach(b=>b.addEventListener('click',()=>{current=Number(b.dataset.case);renderForecast();showView('forecast');window.scrollTo({top:250,behavior:'smooth'})}));
+  $$('.failure-link').forEach(b=>b.addEventListener('click',()=>{current=Number(b.dataset.case);renderForecast();showView('replay');window.scrollTo({top:250,behavior:'smooth'})}));
 }
 function warningCounts(){
   const t=Number($('#threshold').value);$('#threshold-value').textContent=t+' µg/m³';
@@ -131,6 +131,7 @@ async function init(){
   for(const c of E.cases)for(const k of ['ridge','forest']){const p=infer(k,c.x);if(!Number.isFinite(p)||Math.abs(p-c.predictions[k])>1e-5)throw Error('Trained-model export does not match the saved predictions.');}
   stage='rendering';renderForecast();metrics();lab();showView(location.hash.slice(1));
   $('#loading').hidden=true;$('#dashboard').hidden=false;
+  if(typeof startLive==='function')startLive();
   $('#day').disabled=false;$$('[data-window]').forEach(b=>b.disabled=false);
 }catch(e){E=undefined;$('#loading').hidden=true;$('#dashboard').hidden=true;$('#loaderror').hidden=false;
   $('#load-error-detail').textContent=location.protocol==='file:'?'Open this dashboard through its hosted URL, or serve dist/ with python3 -m http.server 8000 --directory dist.':`Forecast loading failed during ${stage}. ${e.name==='AbortError'?'The data request timed out.':e.message} Check your connection and retry. If this persists, the site owner should redeploy the complete dist/ folder.`;

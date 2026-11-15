@@ -54,3 +54,7 @@ The repaired release is packaged from the verified source. Final deployment IDs 
 ## Latest follow-up: user-reported Forecast unavailable
 
 Inspected the latest public source and this audit before changes. Public root URL loaded with no console errors; all 730 parity comparisons passed in the existing frontend suite. No model or prediction code was changed and no models were retrained. Independent verification and four Python tests pass. Public replay of 13 June 2025 shows a 41.3 µg/m³ error; 15 November base scenario predicts 57.4, changing wind to 25 km/h predicts 53.9; wind 100 is rejected. Full-year chart and browser downloads of CSV and README work. The specific reported loading failure remains unconfirmed; exact failing-stage text was requested from the user. Team names and equal contributions were updated from the team’s explicit confirmation.
+
+## Next-day mode implementation
+
+Added a distinct current Forecast homepage and moved the unchanged historical dashboard to #replay. Models were not retrained. Full origin-day estimates are fetched from the two documented provider endpoints; the remaining hours are forecasts, clearly disclosed. Tomorrow pollutant values only feed the provider comparison, never model features. Live intervals are not claimed. Snapshot fallback is explicitly labelled and expires after two hours or a change of India calendar day. Exportable forecast records support future prospective scoring. See tests/live.test.cjs and README for validation boundaries.
