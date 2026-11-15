@@ -50,3 +50,7 @@ Official requirements were checked against https://highschoolhackathon.org/brief
 ## Deployment verification
 
 The repaired release is packaged from the verified source. Final deployment IDs and post-publication browser/asset checks are recorded separately in the accompanying AirCast-Final-Audit.md handoff report, so they do not alter the already packaged deployment source. The public baseline was verified before changes.
+
+## Latest follow-up: user-reported Forecast unavailable
+
+Inspected the latest public source and this audit before changes. Public root URL loaded with no console errors; all 730 parity comparisons passed in the existing frontend suite. No model or prediction code was changed and no models were retrained. Independent verification and four Python tests pass. Public replay of 13 June 2025 shows a 41.3 µg/m³ error; 15 November base scenario predicts 57.4, changing wind to 25 km/h predicts 53.9; wind 100 is rejected. Full-year chart and browser downloads of CSV and README work. The specific reported loading failure remains unconfirmed; exact failing-stage text was requested from the user. Team names and equal contributions were updated from the team’s explicit confirmation.

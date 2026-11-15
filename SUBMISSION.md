@@ -15,3 +15,11 @@
 **Limits and next steps.** We predict another model's pollution estimates, not sensor-validated exposure. Reanalysis is retrospective; daily averages hide spikes. We would next validate on Jaipur CPCB sensors, run a prospective test with issue-time inputs and evaluate decisions with users.
 
 **Sources and tools.** [Open-Meteo / CAMS air quality](https://open-meteo.com/en/docs/air-quality-api), [Open-Meteo weather](https://open-meteo.com/en/docs/historical-weather-api) (CC BY 4.0; contains modified Copernicus Atmosphere Monitoring Service information); [CPCB AQI bands](https://airquality.cpcb.gov.in/ccr_docs/About_AQI.pdf); Python, pandas, NumPy, scikit-learn, Matplotlib; Google Fonts; HTML/CSS/JavaScript. OpenAI Codex assisted with code, analysis implementation, interface and writing. Full sources, parameters and reproducibility steps are in README.md.
+
+## Team contributions
+
+Nitaksh Jain and Kyros Goyal contributed equally (50% each), jointly across the data work, machine-learning experiment, dashboard, testing and submission documentation. This allocation was confirmed by the team. OpenAI Codex assistance is credited above.
+
+## Historical Dataset Partition
+
+The 2023–2025 dates describe historical observations, not project-development dates. The bundled Open-Meteo data was downloaded on 15 November 2026. The models were trained and evaluated on 15 November 2026 during the hackathon. Target-date partitions remain: training 8 January 2023–30 June 2024 (540 days), validation 1 July–31 December 2024 (184 days), and testing 1 January–31 December 2025 (365 days). No observations, model results or methodology were changed for this wording update.

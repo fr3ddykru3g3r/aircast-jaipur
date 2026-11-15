@@ -92,3 +92,15 @@ Exact API queries are in `data/SOURCES.md`; raw-file SHA-256 hashes and library 
 ## Audit and checks
 
 `AUDIT.md` records findings and repairs; `audit/verification.json` is the independent result. Run `python verify.py`, `python -m unittest discover -s tests -p 'test_*.py'`, and `node tests/frontend.test.cjs` (Node 18+ for frontend tests). Browser use itself needs no Node installation. The 2025 replay and warning counts have been browser-tested; Colab cloud execution still depends on its package availability and upload permissions.
+
+## Team contributions
+
+Nitaksh Jain and Kyros Goyal contributed equally (50% each), jointly across the data work, machine-learning experiment, dashboard, testing and submission documentation. This allocation was confirmed by the team. OpenAI Codex assistance is credited above.
+
+## Current public verification
+
+The current public URL loaded successfully during the latest browser check. Historical replay, date selection, the full-year chart, browser inference, invalid scenario inputs, CSV download and README download were checked. `python verify.py`, four Python unit tests and the frontend test suite passed without retraining. Original MAE/RMSE/R² match the experiment and dashboard. A user-reported intermittent “Forecast unavailable” could not be reproduced; its cause remains unconfirmed pending the exact error-stage message. Do not describe this as a proven loading-error repair. Colab cloud execution and external third-party link availability are not comprehensively verified.
+
+## Historical Dataset Partition
+
+The 2023–2025 dates describe historical observations, not project-development dates. The bundled Open-Meteo data was downloaded on 15 November 2026. The models were trained and evaluated on 15 November 2026 during the hackathon. Target-date partitions remain: training 8 January 2023–30 June 2024 (540 days), validation 1 July–31 December 2024 (184 days), and testing 1 January–31 December 2025 (365 days). No observations, model results or methodology were changed for this wording update.
