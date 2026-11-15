@@ -1,0 +1,79 @@
+{
+  "passed": true,
+  "checks": {
+    "jaipur_air.json hash": true,
+    "jaipur_air.json timezone": true,
+    "jaipur_air.json complete hourly calendar": true,
+    "jaipur_weather.json hash": true,
+    "jaipur_weather.json timezone": true,
+    "jaipur_weather.json complete hourly calendar": true,
+    "split sizes": true,
+    "chronological disjoint targets": true,
+    "strictly next calendar day": true,
+    "all 1089 feature rows reconstructed from past-only raw data": true,
+    "training-only ridge coefficients independently solved": true,
+    "persistence metrics independently match": true,
+    "persistence exported predictions match raw reconstruction": true,
+    "ridge metrics independently match": true,
+    "ridge exported predictions match raw reconstruction": true,
+    "forest metrics independently match": true,
+    "forest exported predictions match raw reconstruction": true,
+    "model selection uses validation MAE": true,
+    "interval uses exact 1-based residual rank": true,
+    "reported interval coverage matches endpoints": true,
+    "CSV and JSON match all 365 cases": true
+  },
+  "failures": [],
+  "raw_missing_values": 0,
+  "counts": {
+    "hourly": 26304,
+    "daily": 1096,
+    "usable": 1089,
+    "train": 540,
+    "validation": 184,
+    "test": 365
+  },
+  "metrics": {
+    "persistence": {
+      "mae": 7.3910616438356165,
+      "rmse": 10.335353101601285,
+      "r2": 0.5693360054930816,
+      "caught": 16,
+      "missed": 14,
+      "false_alarms": 14,
+      "correct_clear": 321,
+      "precision": 0.5333333333333333,
+      "recall": 0.5333333333333333
+    },
+    "ridge": {
+      "mae": 7.08469244522061,
+      "rmse": 9.660966282796439,
+      "r2": 0.6237044696574394,
+      "caught": 15,
+      "missed": 15,
+      "false_alarms": 7,
+      "correct_clear": 328,
+      "precision": 0.6818181818181818,
+      "recall": 0.5
+    },
+    "forest": {
+      "mae": 7.234647494404592,
+      "rmse": 9.927008055396662,
+      "r2": 0.6026944099710888,
+      "caught": 15,
+      "missed": 15,
+      "false_alarms": 11,
+      "correct_clear": 324,
+      "precision": 0.5769230769230769,
+      "recall": 0.5
+    }
+  },
+  "validation_mae": {
+    "ridge": 6.673310512608042,
+    "forest": 6.729765610624013
+  },
+  "correct_interval_rank": 148,
+  "correct_interval_radius": 10.47486901359899,
+  "correct_interval_coverage": 0.7972602739726027,
+  "legacy_float64_forest_mismatches": 5
+}
